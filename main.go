@@ -2,8 +2,19 @@ package main
 
 import (
 	"fmt"
+	// c9 "main/CH9-Maps/c1-distict-words"
 	utils "main/utils"
+
+	mystrings "github.com/ariefzainuri96/mystrings"
 )
+
+type Car struct {
+	color string
+}
+
+func (c *Car) setColor(color string) {
+	c.color = color
+}
 
 func main() {
 	// fmt.Println(CH3.Reformat("Hello World", CH3.Formater))
@@ -17,7 +28,26 @@ func main() {
 	// showStrings("test", "lower")
 	// showStrings(testArray[:]...)
 
-	isValidPassword("1234short")
+	// isValidPassword("1234short")
+
+	// c9.CountDistinctWords([]string{"Hello world", "hello there", "General Kenobi"})
+
+	var x int = 50
+	var y *int = &x
+	*y = 100
+
+	fmt.Println(x)
+	fmt.Println(*y)
+
+	c := Car{
+		color: "red",
+	}
+
+	c.setColor("blue")
+
+	fmt.Println(c.color)
+
+	fmt.Println(mystrings.Reverse("Hello World"))
 }
 
 func fizzbuzz() {
