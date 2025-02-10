@@ -5,7 +5,7 @@ import (
 	// c9 "main/CH9-Maps/c1-distict-words"
 	utils "main/utils"
 
-	mystrings "github.com/ariefzainuri96/mystrings"
+	api "main/services"
 )
 
 type Car struct {
@@ -32,22 +32,70 @@ func main() {
 
 	// c9.CountDistinctWords([]string{"Hello world", "hello there", "General Kenobi"})
 
-	var x int = 50
-	var y *int = &x
-	*y = 100
+	// var x int = 50
+	// var y *int = &x
+	// *y = 100
 
-	fmt.Println(x)
-	fmt.Println(*y)
+	// fmt.Println(x)
+	// fmt.Println(*y)
 
-	c := Car{
-		color: "red",
+	// c := Car{
+	// 	color: "red",
+	// }
+
+	// c.setColor("blue")
+
+	// fmt.Println(c.color)
+
+	// fmt.Println(mystrings.Reverse("Hello World"))
+
+	// c12l1.ConcurrencyTest("Hello World 1")
+	// c12l1.ConcurrencyTest("Hello World 2")
+	// c12l1.ConcurrencyTest("Hello World 3")
+	// getUserData()
+
+	testAddChannel()
+}
+
+func addEmailsToQueue(emails []string) chan string {
+	ch := make(chan string, len(emails))
+
+	for _, email := range emails {
+		ch <- email
 	}
 
-	c.setColor("blue")
+	close(ch)
 
-	fmt.Println(c.color)
+	return ch
+}
 
-	fmt.Println(mystrings.Reverse("Hello World"))
+func testAddChannel() {
+	emails := []string{
+		"To boldly go where no man has gone before.",
+		"Live long and prosper.",
+	}
+
+	ch := addEmailsToQueue(emails)
+
+	for email := range ch {
+		fmt.Println(email)
+	}
+}
+
+func getUserData() {
+	userCh := make(chan api.User)
+	errCh := make(chan error)
+
+	fmt.Println("Fetching User Data...")
+
+	go api.GetUserData(userCh, errCh)
+
+	select {
+	case err := <-errCh:
+		fmt.Println("Error:", err)
+	case user := <-userCh:
+		fmt.Println("User:", user)
+	}
 }
 
 func fizzbuzz() {

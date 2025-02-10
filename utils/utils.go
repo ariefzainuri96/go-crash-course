@@ -1,7 +1,9 @@
 package utils
 
 import (
+	"math/rand"
 	"strings"
+	"time"
 	"unicode"
 )
 
@@ -24,4 +26,11 @@ func IsDigit(s string) bool {
 		}
 	}
 	return true
+}
+
+// Initialize a new random source and generator
+var rnd = rand.New(rand.NewSource(time.Now().UnixNano()))
+
+func RandBool() bool {
+	return rnd.Intn(2) == 1
 }
