@@ -7,7 +7,9 @@ import (
 
 	api "main/services"
 
-	l7select "main/CH12-Channels/l7-select"
+	// l7select "main/CH12-Channels/l7-select"
+
+	ch12c1 "main/CH12-Channels/c1"
 )
 
 type Car struct {
@@ -58,32 +60,34 @@ func main() {
 
 	// testAddChannel()
 
-	l7select.Test(
-		[]string{
-			"hi friend",
-			"What's going on?",
-			"Welcome to the business",
-			"I'll pay you to be my friend",
-		},
-		[]string{
-			"Will you make your appointment?",
-			"Let's be friends",
-			"What are you doing?",
-			"I can't believe you've done this.",
-		},
-	)
-	l7select.Test(
-		[]string{
-			"this song slaps hard",
-			"yooo hoooo",
-			"i'm a big fan",
-		},
-		[]string{
-			"What do you think of this song?",
-			"I hate this band",
-			"Can you believe this song?",
-		},
-	)
+	// l7select.Test(
+	// 	[]string{
+	// 		"hi friend",
+	// 		"What's going on?",
+	// 		"Welcome to the business",
+	// 		"I'll pay you to be my friend",
+	// 	},
+	// 	[]string{
+	// 		"Will you make your appointment?",
+	// 		"Let's be friends",
+	// 		"What are you doing?",
+	// 		"I can't believe you've done this.",
+	// 	},
+	// )
+	// l7select.Test(
+	// 	[]string{
+	// 		"this song slaps hard",
+	// 		"yooo hoooo",
+	// 		"i'm a big fan",
+	// 	},
+	// 	[]string{
+	// 		"What do you think of this song?",
+	// 		"I hate this band",
+	// 		"Can you believe this song?",
+	// 	},
+	// )
+
+	ch12c1.Test(4)
 }
 
 func addEmailsToQueue(emails []string) chan string {
